@@ -1,0 +1,44 @@
+<!doctype html><html lang="ar" dir="rtl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Platinum Gym | اشتراك</title>
+<style>@font-face{font-family:'Cairo';font-weight:400;font-display:swap;src:url(https://cdn.jsdelivr.net/npm/@fontsource/cairo@5.3.0/files/cairo-arabic-400-normal.woff2) format('woff2');unicode-range:U+0600-06FF,U+0750-077F,U+FB50-FDFF,U+FE70-FEFF,U+200C-200F}@font-face{font-family:'Cairo';font-weight:400;font-display:swap;src:url(https://cdn.jsdelivr.net/npm/@fontsource/cairo@5.3.0/files/cairo-latin-400-normal.woff2) format('woff2');unicode-range:U+0000-00FF,U+2000-206F}@font-face{font-family:'Cairo';font-weight:700;font-display:swap;src:url(https://cdn.jsdelivr.net/npm/@fontsource/cairo@5.3.0/files/cairo-arabic-700-normal.woff2) format('woff2');unicode-range:U+0600-06FF,U+0750-077F,U+FB50-FDFF,U+FE70-FEFF,U+200C-200F}@font-face{font-family:'Cairo';font-weight:700;font-display:swap;src:url(https://cdn.jsdelivr.net/npm/@fontsource/cairo@5.3.0/files/cairo-latin-700-normal.woff2) format('woff2');unicode-range:U+0000-00FF,U+2000-206F}@font-face{font-family:'Cairo';font-weight:900;font-display:swap;src:url(https://cdn.jsdelivr.net/npm/@fontsource/cairo@5.3.0/files/cairo-arabic-900-normal.woff2) format('woff2');unicode-range:U+0600-06FF,U+0750-077F,U+FB50-FDFF,U+FE70-FEFF,U+200C-200F}@font-face{font-family:'Cairo';font-weight:900;font-display:swap;src:url(https://cdn.jsdelivr.net/npm/@fontsource/cairo@5.3.0/files/cairo-latin-900-normal.woff2) format('woff2');unicode-range:U+0000-00FF,U+2000-206F}
+:root{--bg:#14100a;--c2:#201a10;--am:#f0b04c;--tx:#f4ece0;--mu:#a89878}
+*{box-sizing:border-box;margin:0}body{font-family:"Cairo",Tahoma,sans-serif;background:var(--bg);color:var(--tx);line-height:1.6}
+.hero{position:relative;padding:34px 20px 64px;overflow:hidden;background:var(--bg)}
+.hero:before{content:"";position:absolute;right:-25%;top:-10%;width:130%;height:140%;background:var(--am);transform:skewX(-14deg)}
+.hero>*{position:relative}.hero small{display:inline-block;background:var(--bg);color:var(--am);font-weight:700;font-size:12px;letter-spacing:.3em;padding:4px 10px;border-radius:4px}
+.hero h1{font-family:"Cairo";font-weight:900;font-size:46px;line-height:1;margin:14px 0 6px;color:#14100a;letter-spacing:.02em;direction:ltr;text-align:right}
+.hero h1 span{color:#14100a}.hero p{font-weight:700;font-size:17px;color:#14100a;max-width:260px}
+.wrap{max-width:480px;margin:-30px auto 0;padding:0 16px 150px;position:relative}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:22px}.stats div{background:var(--c2);border-radius:14px;padding:12px 4px;text-align:center}
+.stats b{display:block;font-weight:900;font-size:22px;color:var(--am)}.stats span{font-size:11px;color:var(--mu)}
+h2{font-weight:900;font-size:15px;margin:22px 0 10px;display:flex;align-items:center;gap:8px}h2:before{content:"";width:18px;height:4px;background:var(--am);border-radius:2px}
+.pl{display:grid;gap:10px}.p{position:relative;text-align:right;font:inherit;color:inherit;background:var(--c2);border:2px solid transparent;border-radius:18px;padding:16px;cursor:pointer;width:100%;display:flex;justify-content:space-between;align-items:center}
+.p b{display:block;font-size:18px;font-weight:900}.p span{font-size:12.5px;color:var(--mu)}.p em{font-style:normal;font-weight:900;font-size:26px;color:var(--am);direction:ltr}
+.p.on{border-color:var(--am);background:#2a2113}.p i{position:absolute;top:-9px;left:14px;background:var(--am);color:#14100a;font-style:normal;font-size:11px;font-weight:900;padding:2px 9px;border-radius:99px}
+.ch{display:flex;gap:8px;flex-wrap:wrap}.c{background:var(--c2);border:2px solid transparent;border-radius:12px;color:inherit;font:inherit;font-weight:700;padding:10px 16px;cursor:pointer}.c.on{border-color:var(--am);color:var(--am)}
+input{width:100%;background:var(--c2);border:2px solid #34291a;border-radius:14px;color:var(--tx);font:inherit;font-size:16px;padding:14px;margin-bottom:10px}input:focus{outline:0;border-color:var(--am)}
+.err{color:#ff8a7a;font-size:13px;display:none}.note{text-align:center;font-size:12px;color:var(--mu);margin-top:14px}
+.bar{position:fixed;left:0;right:0;bottom:0;padding:12px 16px 20px;background:linear-gradient(transparent,var(--bg) 35%)}
+.bar button{display:block;width:100%;max-width:480px;margin:0 auto;background:var(--am);color:#14100a;border:0;border-radius:14px;padding:16px;font:inherit;font-weight:900;font-size:18px;cursor:pointer}
+.ok{display:none;max-width:480px;margin:0 auto;padding:40px 18px;text-align:center}.ok h3{font-weight:900;font-size:26px;margin:0 0 4px}
+.card{margin:22px 0;border-radius:22px;padding:20px;text-align:right;background:linear-gradient(135deg,#f0b04c,#c98618);color:#14100a;position:relative;overflow:hidden}
+.card:after{content:"";position:absolute;left:-20px;bottom:-30px;width:140px;height:140px;border:14px solid #14100a22;border-radius:50%}
+.card small{font-weight:700;letter-spacing:.3em;font-size:11px}.card h4{font-weight:900;font-size:24px;direction:ltr;text-align:right;margin:4px 0 14px}.card p{font-weight:700;line-height:1.9}
+</style></head><body>
+<section class="hero" id="h"><small>MEMBERSHIP</small><h1>PLATI<span>NUM</span><br>GYM</h1><p>اشترك في النادي من جوالك بدقيقة</p></section>
+<main class="wrap" id="f">
+<div class="stats"><div><b>24/7</b><span>تدريب مرن</span></div><div><b>+50</b><span>جهاز</span></div><div><b>1:1</b><span>مدرب شخصي</span></div></div>
+<h2>اختر باقتك</h2><div class="pl" id="pl"></div>
+<h2>متى تبدأ؟</h2><div class="ch" id="st"></div>
+<h2>بياناتك</h2><input id="n" placeholder="الاسم"><input id="p" inputmode="tel" placeholder="رقم الواتساب"><div class="err" id="e"></div>
+<p class="note">عينة توضيحية من فريق وهج بهوية Platinum Gym. الباقات والأرقام أمثلة، ولا يتم إرسال أي بيانات.</p></main>
+<div class="ok" id="ok"><h3>مرحباً بك في العائلة</h3><p style="color:var(--mu)">هذا مثال لبطاقة العضوية بعد الاشتراك</p><div class="card"><small>PLATINUM MEMBER</small><h4 id="cn"></h4><p id="cs"></p></div><p class="note">عينة توضيحية من فريق وهج</p></div>
+<div class="bar" id="b"><button id="go">تأكيد الاشتراك</button></div>
+<script>
+var P=[["شهري","دخول كامل لكل الأجهزة","1"],["3 أشهر","الأكثر طلباً + تقييم لياقة","3"],["سنوي","أفضل قيمة + مدرب شخصي أسبوعي","12"]],S=["اليوم","غداً","بداية الأسبوع"],$=function(i){return document.getElementById(i)},x=[1,0];
+$("pl").innerHTML=P.map(function(a,i){return"<button class='p"+(i==1?" on":"")+"' data-i='"+i+"'>"+(i==1?"<i>الأكثر طلباً</i>":"")+"<div><b>"+a[0]+"</b><span>"+a[1]+"</span></div><em>"+a[2]+"<small style='font-size:12px'> شهر</small></em></button>"}).join("");
+$("st").innerHTML=S.map(function(a,i){return"<button class='c"+(i?"":" on")+"'>"+a+"</button>"}).join("");
+$("pl").onclick=function(e){var b=e.target.closest(".p");if(!b)return;[].forEach.call($("pl").children,function(c){c.classList.remove("on")});b.classList.add("on");x[0]=+b.dataset.i};
+$("st").onclick=function(e){var b=e.target.closest(".c");if(!b)return;[].forEach.call($("st").children,function(c){c.classList.remove("on")});b.classList.add("on");x[1]=S.indexOf(b.textContent)};
+$("go").onclick=function(){var n=$("n").value.trim(),p=$("p").value.replace(/\D/g,""),e=$("e");e.style.display="none";if(n.length<2){e.textContent="اكتب اسمك";e.style.display="block";return}if(p.length<8){e.textContent="رقم الواتساب غير مكتمل";e.style.display="block";return}
+$("cn").textContent="#"+(1000+Math.floor(Math.random()*900));$("cs").innerHTML=n.replace(/</g,"")+"<br>باقة "+P[x[0]][0]+"<br>البداية: "+S[x[1]];$("f").style.display="none";$("b").style.display="none";$("h").style.display="none";$("ok").style.display="block"};
+</script></body></html>
