@@ -1,0 +1,474 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="وهج: فريق تسويق رقمي للمشاريع الصغيرة في الخليج. ريلز، تصاميم، إدارة حسابات، صفحات طلب أونلاين، إعلانات وملف جوجل.">
+<title>وهج | Wahaj</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Readex+Pro:wght@300;400;500;600;700&family=Aref+Ruqaa:wght@700&family=Inter:wght@700&display=swap">
+<style>
+/* Layout: single RTL column; glowing wordmark is the one bold moment; a service picker builds the WhatsApp request. Deliberate single dark look (brand). */
+:root{
+  --ground:#0B0D12; --raise:#0F121A; --raise2:#151A24; --line:#1E2433;
+  --ink:#FFF6E0; --mute:#9AA3B5; --gold:#FFB020; --gold-soft:rgba(255,176,32,.12);
+  --font:"Readex Pro","Noto Sans Arabic","Segoe UI",Tahoma,sans-serif;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--ground);color:var(--ink);font-family:var(--font);font-size:16px;line-height:1.75;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.wrap{max-width:760px;margin-inline:auto;padding-block:36px 140px;display:flex;flex-direction:column;gap:56px}
+a{color:var(--gold)}
+:focus-visible{outline:2px solid var(--gold);outline-offset:3px;border-radius:8px}
+h1,h2,h3{text-wrap:balance;margin:0;line-height:1.35;font-weight:700}
+h2{font-size:1.55rem}
+h3{font-size:1.1rem;font-weight:600}
+p{margin:0}
+.mute{color:var(--mute)}
+section{display:flex;flex-direction:column;gap:18px}
+
+/* hero */
+.hero{display:flex;flex-direction:column;align-items:flex-start;gap:16px}
+.mark{font-weight:700;font-size:clamp(4rem,20vw,6.5rem);line-height:1;color:var(--gold);
+  text-shadow:0 0 18px rgba(255,176,32,.55),0 0 60px rgba(255,176,32,.25)}
+.mark small{display:block;font-size:.8rem;font-weight:400;letter-spacing:.5em;color:var(--mute);text-shadow:none;margin-top:8px;direction:ltr;text-align:right}
+@media (prefers-reduced-motion:no-preference){.mark{animation:glow 4.5s ease-in-out infinite}
+  @keyframes glow{50%{text-shadow:0 0 26px rgba(255,176,32,.75),0 0 90px rgba(255,176,32,.35)}}}
+.hero h1{font-size:clamp(1.6rem,6vw,2.3rem)}
+.hero p{max-width:36em}
+.row{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+.btn{display:inline-flex;align-items:center;gap:8px;background:var(--gold);color:#0B0D12;font-weight:600;text-decoration:none;border:0;
+  padding:12px 22px;border-radius:999px;font:inherit;font-weight:600;cursor:pointer}
+.btn:hover{background:#FFC24D}
+.btn.ghost{background:none;color:var(--ink);border:1px solid var(--line)}
+.btn.ghost:hover{border-color:var(--mute)}
+.num{font-variant-numeric:tabular-nums;direction:ltr;unicode-bidi:isolate;user-select:all}
+.stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;width:100%}
+@media (max-width:560px){.stats{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.stat{border-top:1px solid var(--line);padding-top:10px}
+.stat b{display:block;font-size:1.35rem;color:var(--gold)}
+.stat span{font-size:.85rem;color:var(--mute)}
+
+/* picker */
+.how{font-size:.95rem}
+.cat{background:var(--raise);border:1px solid var(--line);border-radius:18px;padding:18px;display:flex;flex-direction:column;gap:12px}
+.cat header{display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap}
+.cat header p{font-size:.88rem;color:var(--mute)}
+.all{background:none;border:0;color:var(--gold);font:inherit;font-size:.85rem;cursor:pointer;padding:0}
+.items{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+@media (max-width:560px){.items{grid-template-columns:1fr}}
+.item{position:relative;display:flex;gap:10px;align-items:flex-start;padding:10px 12px;border:1px solid var(--line);border-radius:12px;cursor:pointer;background:var(--ground);min-width:0}
+.item:hover{border-color:var(--mute)}
+.item input{appearance:none;flex:none;width:20px;height:20px;margin-top:3px;border:1.5px solid var(--mute);border-radius:6px;display:grid;place-items:center;cursor:pointer}
+.item input:checked{background:var(--gold);border-color:var(--gold)}
+.item input:checked::after{content:"";width:10px;height:6px;border:2px solid #0B0D12;border-top:0;border-right:0;transform:rotate(-45deg) translate(1px,-1px)}
+.item:has(input:checked){border-color:var(--gold);background:var(--gold-soft)}
+.item b{display:block;font-weight:500;font-size:.95rem}
+.item small{display:block;color:var(--mute);font-size:.8rem;line-height:1.55}
+
+/* details form */
+.form{background:var(--raise);border:1px solid var(--line);border-radius:18px;padding:18px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+@media (max-width:560px){.form{grid-template-columns:1fr}}
+.form label{display:flex;flex-direction:column;gap:6px;font-size:.88rem;color:var(--mute);min-width:0}
+.form .full{grid-column:1/-1}
+.form input,.form select,.form textarea{font:inherit;color:var(--ink);background:var(--ground);border:1px solid var(--line);border-radius:10px;padding:10px 12px;width:100%}
+.form textarea{min-height:84px;resize:vertical}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--line);border-radius:999px;padding:5px 12px;font-size:.85rem;color:var(--mute);cursor:pointer}
+.chip input{accent-color:var(--gold)}
+.chip:has(input:checked){border-color:var(--gold);color:var(--ink)}
+
+/* summary */
+.summary{background:var(--raise2);border:1px solid var(--line);border-radius:18px;padding:18px;display:flex;flex-direction:column;gap:12px}
+.summary pre{margin:0;white-space:pre-wrap;font:inherit;font-size:.9rem;color:var(--ink);background:var(--ground);border:1px solid var(--line);border-radius:12px;padding:12px;max-height:260px;overflow:auto}
+.note{font-size:.82rem;color:var(--mute)}
+
+/* sticky bar */
+.bar{position:fixed;left:0;right:0;bottom:0;z-index:20;background:rgba(20,16,11,.94);backdrop-filter:blur(8px);border-top:1px solid var(--line);
+  padding:10px max(16px,env(safe-area-inset-right,0px)) calc(10px + env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px))}
+.bar .in{max-width:760px;margin-inline:auto;display:flex;align-items:center;justify-content:space-between;gap:12px}
+.bar span{font-size:.92rem}
+.bar b{color:var(--gold)}
+
+/* work */
+.work{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.reel{display:flex;flex-direction:column;gap:8px;min-width:0}
+.reel img{display:block;width:100%;aspect-ratio:9/16;object-fit:cover;border-radius:14px;border:1px solid var(--line)}
+.reel b{font-weight:600;font-size:.92rem}
+.reel .links{display:flex;flex-wrap:wrap;gap:4px 12px;font-size:.82rem}
+.reel .links a{color:var(--mute)}
+.steps{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:14px;counter-reset:s}
+.steps li{counter-increment:s;display:grid;grid-template-columns:2.2rem 1fr;gap:12px;align-items:baseline}
+.steps li::before{content:counter(s,arabic-indic);color:var(--gold);font-size:1.3rem;font-weight:700;text-align:center}
+.contact{background:var(--raise);border:1px solid var(--line);border-radius:20px;padding:22px;display:flex;flex-wrap:wrap;gap:22px;align-items:center}
+.contact .txt{flex:1 1 220px;min-width:0;display:flex;flex-direction:column;gap:10px}
+.contact img{width:140px;height:140px;border-radius:12px;flex:none}
+footer{display:flex;flex-wrap:wrap;gap:8px 18px;font-size:.85rem;color:var(--mute)}
+footer a{color:var(--mute)}
+
+.logo{width:min(280px,66vw);align-self:center}
+.logo svg{display:block;width:100%;height:auto;overflow:visible;filter:drop-shadow(0 0 30px rgba(255,176,32,.25))}
+.tag{display:inline-block;font-size:.7rem;color:var(--gold);border:1px solid rgba(255,176,32,.4);border-radius:999px;padding:0 8px;margin-inline-start:6px;vertical-align:middle}
+/* premium motion layer */
+#embers{position:fixed;inset:0;width:100%;height:100%;z-index:0;pointer-events:none;opacity:.55}
+.wrap,.bar{position:relative;z-index:1}
+.bar{position:fixed}
+.mark{background:linear-gradient(100deg,var(--gold) 0%,var(--gold) 38%,#FFF6E0 50%,var(--gold) 62%,var(--gold) 100%);background-size:250% 100%;
+  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;filter:drop-shadow(0 0 18px rgba(255,176,32,.45))}
+.mark small{-webkit-text-fill-color:var(--mute)}
+h2{position:relative;padding-bottom:10px}
+h2::after{content:"";position:absolute;right:0;bottom:0;height:2px;width:56px;background:linear-gradient(90deg,transparent,var(--gold));border-radius:2px}
+.marquee{overflow:hidden;border-block:1px solid var(--line);padding-block:10px;mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent)}
+.marquee .track{display:flex;gap:28px;width:max-content;white-space:nowrap;color:var(--mute);font-size:.95rem}
+.marquee .track span::before{content:"✦";color:var(--gold);margin-inline-end:10px;font-size:.75em}
+.cat{position:relative;transition:transform .35s cubic-bezier(.2,.8,.2,1),border-color .35s,box-shadow .35s}
+.cat:hover{transform:translateY(-3px);border-color:rgba(255,176,32,.45);box-shadow:0 18px 40px -24px rgba(255,176,32,.45)}
+.item{transition:border-color .2s,background .2s,transform .2s}
+.item:active{transform:scale(.985)}
+.reel img{transition:transform .5s cubic-bezier(.2,.8,.2,1),box-shadow .5s}
+.reel:hover img{transform:translateY(-4px) scale(1.01);box-shadow:0 24px 50px -28px rgba(255,176,32,.5)}
+.btn{transition:transform .2s,box-shadow .3s,background .2s}
+.btn:not(.ghost){box-shadow:0 10px 30px -12px rgba(255,176,32,.7)}
+.btn:hover{transform:translateY(-1px)}
+@media (prefers-reduced-motion:no-preference){
+  .mark{animation:sweep 5s ease-in-out infinite}
+  @keyframes sweep{0%,100%{background-position:100% 0}50%{background-position:0 0}}
+  .marquee .track{animation:slide 38s linear infinite}
+  @keyframes slide{to{transform:translateX(50%)}}
+  .rise{animation:rise .9s cubic-bezier(.2,.8,.2,1) both}
+  @keyframes rise{from{transform:translateY(18px)}to{transform:none}}
+  .hero>*:nth-child(2){animation-delay:.08s}.hero>*:nth-child(3){animation-delay:.16s}.hero>*:nth-child(4){animation-delay:.24s}.hero>*:nth-child(5){animation-delay:.32s}
+  .bar .btn{animation:pulse 2.6s ease-in-out infinite}
+  @keyframes pulse{50%{box-shadow:0 0 0 6px rgba(255,176,32,.12),0 10px 30px -12px rgba(255,176,32,.7)}}
+}
+</style>
+
+
+
+<style>body{margin:0}</style>
+</head>
+<body>
+<canvas id="embers" aria-hidden="true"></canvas>
+<div class="wrap" dir="rtl" lang="ar">
+
+  <header class="hero">
+    <div class="logo rise" aria-label="شعار وهج">
+<svg viewBox="0 0 600 510" role="img" aria-label="شعار وهج">
+<defs><radialGradient id="glw" cx="50%" cy="42%" r="50%"><stop offset="0" stop-color="#FFB020" stop-opacity=".35"/><stop offset="1" stop-color="#FFB020" stop-opacity="0"/></radialGradient></defs>
+<circle cx="300" cy="215" r="250" fill="url(#glw)"/>
+<g class="ring-o" style="transform-origin:300px 215px"><circle cx="300" cy="215" r="196" fill="none" stroke="#FFB020" stroke-width="10" stroke-dasharray="3 46.7" opacity="0.55"/></g>
+<g class="ring-i" style="transform-origin:300px 215px"><circle cx="300" cy="215" r="160" fill="none" stroke="#FFB020" stroke-width="34" stroke-dasharray="5 16.6" opacity="0.9"/></g>
+<g class="sun" style="transform-origin:300px 215px"><circle cx="300" cy="215" r="122" fill="#FFB020"/><circle cx="300" cy="215" r="122" fill="none" stroke="#FFD27A" stroke-width="3" opacity="0.8"/></g>
+<text class="word" x="300" y="262" text-anchor="middle" font-family="'Aref Ruqaa',serif" font-weight="700" font-size="210" fill="#FFF6E0" stroke="#0B0D12" stroke-width="16" stroke-linejoin="round" paint-order="stroke fill">وهج</text>
+<path class="spark" style="transform-origin:505px 93px" d="M505,60 C508,82 516,90 538,93 C516,96 508,104 505,126 C502,104 494,96 472,93 C494,90 502,82 505,60Z" fill="#F2F4F8"/>
+<text x="300" y="478" text-anchor="middle" font-family="'Inter',sans-serif" font-weight="700" font-size="30" letter-spacing="16" fill="#FFB020" direction="ltr">WAHAJ</text>
+</svg></div>
+    <h1 class="rise">كل اللي يحتاجه مشروعك أونلاين، من فريق واحد.</h1>
+    <p class="mute rise">فيديو وتصميم، إدارة حسابات، مواقع وصفحات طلب، إعلانات، ملف جوجل، وواتساب بزنس. اختر اللي تبيه تحت، ويوصلنا طلبك جاهز على واتساب.</p>
+    <div class="row rise">
+      <a class="btn" href="#pick">اختر خدماتك</a>
+      <a class="btn ghost" href="#work">شوف شغلنا</a>
+    </div>
+    <div class="stats rise">
+      <div class="stat"><b data-count="49" id="total">٤٩</b><span>خدمة تختار منها</span></div>
+      <div class="stat"><b data-count="6">٦</b><span>دول خليجية</span></div>
+      <div class="stat"><b data-count="3">٣</b><span>لغات: عربي، English، فارسی</span></div>
+      <div class="stat"><b>مجانًا</b><span>عينة قبل أي التزام</span></div>
+    </div>
+  </header>
+
+  <div class="marquee" aria-hidden="true"><div class="track" id="mq"></div></div>
+
+  <section id="pick" aria-labelledby="h-pick">
+    <h2 id="h-pick">اختر اللي يحتاجه مشروعك</h2>
+    <p class="how mute">علّم على الخدمات اللي تبيها، عبّي بيانات محلك، وبعدين اضغط "أرسل طلبي". تقدر تختار أكثر من خدمة من أكثر من قسم.</p>
+    <div id="cats"></div>
+  </section>
+
+  <section aria-labelledby="h-info">
+    <h2 id="h-info">بيانات مشروعك</h2>
+    <div class="form">
+      <label>اسم المحل أو المشروع<input id="f-name" type="text" placeholder="مثال: مقهى الوادي"></label>
+      <label>نوع النشاط<input id="f-type" type="text" placeholder="مطعم، صالون، متجر ملابس..."></label>
+      <label>الدولة
+        <select id="f-country">
+          <option value="">اختر</option><option>عُمان</option><option>السعودية</option><option>الإمارات</option><option>الكويت</option><option>قطر</option><option>البحرين</option>
+        </select>
+      </label>
+      <label>حسابك على انستقرام أو تيك توك (اختياري)<input id="f-acc" type="text" placeholder="@اسم_الحساب" dir="ltr"></label>
+      <div class="full" style="display:flex;flex-direction:column;gap:8px">
+        <span class="note">لغة المحتوى</span>
+        <div class="chips" id="langs">
+          <label class="chip"><input type="checkbox" value="عربي" checked>عربي</label>
+          <label class="chip"><input type="checkbox" value="English">English</label>
+          <label class="chip"><input type="checkbox" value="فارسی">فارسی</label>
+        </div>
+      </div>
+      <div class="full" style="display:flex;flex-direction:column;gap:8px">
+        <span class="note">متى تبي تبدأ؟</span>
+        <div class="chips" id="when">
+          <label class="chip"><input type="radio" name="when" value="فورًا" checked>فورًا</label>
+          <label class="chip"><input type="radio" name="when" value="خلال أسبوع">خلال أسبوع</label>
+          <label class="chip"><input type="radio" name="when" value="خلال شهر">خلال شهر</label>
+          <label class="chip"><input type="radio" name="when" value="أبي أعرف أكثر أول">أبي أعرف أكثر أول</label>
+        </div>
+      </div>
+      <label class="full">تفاصيل أو ملاحظات (اختياري)<textarea id="f-notes" placeholder="مثال: عندنا افتتاح فرع جديد آخر الشهر"></textarea></label>
+    </div>
+  </section>
+
+  <section aria-labelledby="h-sum">
+    <h2 id="h-sum">طلبك</h2>
+    <div class="summary">
+      <pre id="msg"></pre>
+      <div class="row">
+        <a class="btn" id="send" href="#" target="_blank" rel="noopener">أرسل طلبي على واتساب</a>
+        <button class="btn ghost" id="copy" type="button">نسخ الطلب</button>
+      </div>
+      <p class="note">إذا ما انفتح واتساب عندك، انسخ الطلب وأرسله على الرقم <span class="num">+968 9899 9470</span>. نرد عليك بعينة مجانية مخصصة لمحلك.</p>
+    </div>
+  </section>
+
+  <section id="work" aria-labelledby="h-work">
+    <h2 id="h-work">من شغلنا</h2>
+    <div class="work">
+      <div class="reel">
+        <img src="r31.jpg" alt="لقطة من ريلز عميل عادي ضد عميل وهج" width="360" height="640" loading="lazy">
+        <b>عميل عادي ضد عميل وهج</b>
+        <div class="links">
+          <a href="https://www.instagram.com/wahaj.gulf/reel/Dfb0Hs2pBgS/" target="_blank" rel="noopener">انستقرام</a>
+          <a href="https://www.tiktok.com/@r3022337/video/7705384195010432263" target="_blank" rel="noopener">تيك توك</a>
+          <a href="https://youtube.com/shorts/XiTneUWZCtc" target="_blank" rel="noopener">يوتيوب</a>
+          <a href="https://x.com/wahaj_gulf/status/2118996756524626102" target="_blank" rel="noopener">X</a>
+        </div>
+      </div>
+      <div class="reel">
+        <img src="fa.jpg" alt="لقطة من الريلز الفارسي" width="360" height="640" loading="lazy">
+        <b>ريلز بالفارسي للجمهور الإيراني</b>
+        <div class="links">
+          <a href="https://www.instagram.com/wahaj.gulf/reel/Dfb6BatB6AB/" target="_blank" rel="noopener">انستقرام</a>
+          <a href="https://www.tiktok.com/@r3022337/video/7705384635177438482" target="_blank" rel="noopener">تيك توك</a>
+          <a href="https://youtube.com/shorts/ZJdjF5zZFzE" target="_blank" rel="noopener">يوتيوب</a>
+          <a href="https://x.com/wahaj_gulf/status/2119006862385488131" target="_blank" rel="noopener">X</a>
+        </div>
+      </div>
+      <div class="reel">
+        <img src="sv.jpg" alt="لقطة من فيديو خدمات وهج" width="360" height="640" loading="lazy">
+        <b>فيديو خدمات وهج</b>
+        <div class="links">
+          <a href="https://www.instagram.com/wahaj.gulf/reel/DfcPX7DhRIK/" target="_blank" rel="noopener">انستقرام</a>
+          <a href="https://www.tiktok.com/@r3022337/video/7705419491227864327" target="_blank" rel="noopener">تيك توك</a>
+          <a href="https://youtube.com/shorts/lVT_parmd8g" target="_blank" rel="noopener">يوتيوب</a>
+          <a href="https://x.com/wahaj_gulf/status/2119053099088462080" target="_blank" rel="noopener">X</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section aria-labelledby="h-steps">
+    <h2 id="h-steps">كيف نشتغل</h2>
+    <ol class="steps">
+      <li><div><b>ترسل طلبك</b><br><span class="mute">من هالصفحة أو على واتساب مباشرة.</span></div></li>
+      <li><div><b>نفهم مشروعك</b><br><span class="mute">وش تبيع، مين زبونك، ووش ناقصك اليوم.</span></div></li>
+      <li><div><b>نرسل لك عينة مجانية</b><br><span class="mute">تصميم أو ريلز بهوية محلك، تشوف الفرق قبل أي التزام.</span></div></li>
+      <li><div><b>نتفق ونبدأ</b><br><span class="mute">نجهز خطة تناسب مشروعك، وننشر ونتابع النتيجة معك أسبوع بأسبوع.</span></div></li>
+    </ol>
+  </section>
+
+  <section class="contact" aria-labelledby="h-contact">
+    <div class="txt">
+      <h2 id="h-contact">تبي تكلمنا مباشرة؟</h2>
+      <p class="note">امسح الكود بالجوال، أو انسخ الرقم.</p>
+      <div class="row"><span class="num">+968 9899 9470</span><button class="btn ghost" id="copyNum" type="button">نسخ الرقم</button></div>
+    </div>
+    <img src="qr.png" alt="كود QR يفتح محادثة واتساب مع وهج" width="140" height="140">
+  </section>
+
+  <footer>
+    <span>وهج © 2026</span>
+    <a href="https://www.instagram.com/wahaj.gulf/" target="_blank" rel="noopener">@wahaj.gulf</a>
+    <a href="https://x.com/wahaj_gulf" target="_blank" rel="noopener">X @wahaj_gulf</a>
+    <a href="https://www.tiktok.com/@r3022337" target="_blank" rel="noopener">TikTok</a>
+  </footer>
+</div>
+
+<div class="bar" role="region" aria-label="ملخص الاختيار">
+  <div class="in">
+    <span id="count">ما اخترت خدمات بعد</span>
+    <a class="btn" id="send2" href="#pick">أرسل طلبي</a>
+  </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.2/anime.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/motion@11.11.13/dist/motion.js"></script>
+<script>
+var CATS=[
+ {t:"فيديو وريلز",d:"محتوى فيديو عمودي 9:16 بفوتاج حقيقي، والهوك من أول ثانية.",i:[
+  ["ريلز ترويجية للمحل","فيديو قصير يعرّف الناس بمحلك ويخليهم يوقفون عنده"],
+  ["ريلز منتجات","فيديو لكل منتج أو طبق أو خدمة عندك"],
+  ["فيديو تعريفي بالنشاط","٣٠-٦٠ ثانية عن قصتك وخدماتك"],
+  ["فيديو عروض ومناسبات","رمضان، العيد، اليوم الوطني، الافتتاحات"],
+  ["تعليق صوتي","صوت بلهجة خليجية، أو بالإنجليزي أو الفارسي"],
+  ["موشن جرافيك","نصوص وأشكال متحركة تشرح خدمتك بوضوح"],
+  ["فيديو مقارنة قبل وبعد","يوضح الفرق اللي تصنعه لزبونك"],
+  ["محتوى بلغات ثانية","نسخ فارسية أو إنجليزية من نفس الفيديو"]]},
+ {t:"تصاميم",d:"كل تصميم من ألوان وهوية محلك، مو قوالب جاهزة.",i:[
+  ["بوستات انستقرام 4:5","تصاميم منشورات للعروض والمنتجات"],
+  ["ستوريز وهايلايت","ستوريز يومية، وأغلفة هايلايت مرتبة"],
+  ["كاروسيل","منشور بعدة شرائح يشرح خدمة أو منتج"],
+  ["هوية بصرية","شعار، ألوان، خطوط، ودليل استخدام بسيط"],
+  ["منيو للمطاعم والمقاهي","منيو للطباعة ونسخة رقمية"],
+  ["بروشور وفلاير","للطباعة أو للإرسال على واتساب"],
+  ["بطاقات عمل","تصميم جاهز للطباعة"],
+  ["تصاميم المناسبات","تهاني وعروض موسمية باسم محلك"]]},
+ {t:"إدارة الحسابات",d:"نمسك حساباتك وننشر بانتظام، وأنت تركز على شغلك.",i:[
+  ["إدارة انستقرام","نشر ريلز وبوستات وستوريز"],
+  ["إدارة تيك توك","نشر فيديوهات بصيغة تيك توك"],
+  ["إدارة يوتيوب شورتس","نشر الفيديوهات القصيرة على قناتك"],
+  ["إدارة X (تويتر)","نشر وردود على الحسابات الكبيرة"],
+  ["إدارة سناب شات","ستوريز ومحتوى يومي"],
+  ["كتابة الكابشن والهاشتاقات","كابشن مختلف لكل منصة"],
+  ["الرد على الرسائل والتعليقات","نرد على زباينك بسرعة وباسم محلك"],
+  ["تقرير شهري","وش نزل، وش جاب تفاعل، ووش الخطة الجاية"]]},
+ {t:"مواقع وصفحات",d:"صفحات سريعة على الجوال، فيها زر واتساب مباشر.",i:[
+  ["صفحة تعريفية للمشروع","صفحة فيها خدماتك وشغلك وطرق التواصل"],
+  ["صفحة حجز مواعيد","للصالونات والعيادات والمدربين"],
+  ["صفحة طلب أونلاين","منيو أو منتجات، والطلب يوصلك واتساب"],
+  ["متجر إلكتروني بسيط","منتجاتك بصور وأسعار وطلب مباشر"],
+  ["صفحة روابط للبايو","كل روابطك بصفحة وحدة باسمك"],
+  ["كود QR مخصص","بألوان محلك، للطاولات والفواتير والمطبوعات"]]},
+ {t:"إعلانات ممولة",d:"نجهز الحملة ونتابعها، والميزانية تدفعها أنت للمنصة مباشرة.",i:[
+  ["إعلانات انستقرام وفيسبوك","إعداد الحملة والاستهداف"],
+  ["إعلانات تيك توك","ترويج ريلز أو حملة كاملة"],
+  ["إعلانات سناب شات","حملات للجمهور الخليجي"],
+  ["تصميم محتوى الإعلان","فيديو أو تصميم مخصص للإعلان"],
+  ["تقرير نتائج الحملة","كم وصلت، وكم رسالة أو زيارة جابت"]]},
+ {t:"جوجل والظهور المحلي",d:"خلي اللي يدور على نشاطك في منطقتك يلقاك أول.",i:[
+  ["إنشاء ملف Google Business","ملفك على خرائط جوجل وبحث جوجل"],
+  ["تحسين ملف جوجل","وصف، خدمات، صور، ومنشورات دورية"],
+  ["خطة لجمع تقييمات حقيقية","طريقة سهلة تطلب فيها التقييم من زباينك"],
+  ["تحسين الظهور في البحث (SEO)","لصفحتك أو موقعك"]]},
+ {t:"واتساب بزنس",d:"رقم مرتب يرد على الزبون ويحوّل الاستفسار لطلب.",i:[
+  ["إعداد واتساب بزنس","الملف التجاري والوصف وساعات العمل"],
+  ["كتالوج المنتجات والخدمات","بصور وأسعار مبدئية"],
+  ["رسائل ترحيب وردود سريعة","ردود جاهزة على الأسئلة المتكررة"],
+  ["تصنيف الزباين","جديد، مهتم، طلب، تم الدفع"],
+  ["رابط مباشر وكود QR","يفتح محادثة معك برسالة جاهزة"]]},
+ {t:"أنظمة ومتابعة",d:"أدوات بسيطة تنظم شغلك وزباينك.",i:[
+  ["جدول متابعة الزباين (CRM)","مين راسلك، وش يبي، ومتى تتابع معه"],
+  ["نظام حجوزات أو طلبات","تشوف كل الطلبات بمكان واحد"],
+  ["خطة محتوى شهرية","وش ننشر كل يوم وعلى أي منصة"],
+  ["دراسة منافسين","وش يسوون منافسينك ووين الفرصة"],
+  ["استشارة تسويقية","جلسة نراجع فيها حساباتك ونطلع بخطة"]]},
+ {t:"محتوى وكتابة وترجمة",d:"كلام يبيع، وصورة تعكس مستواك، وبأكثر من لغة.",i:[
+  ["كتابة محتوى وإعلانات","نصوص بأسلوب يناسب جمهورك"],
+  ["ترجمة عربي، إنجليزي، فارسي","مواقع، منيو، ومستندات"],
+  ["مونتاج فيديو احترافي","ريلز، يوتيوب، وإعلانات"],
+  ["رسم إليستريتر","شخصيات وأيقونات ورسومات خاصة بالبراند"],
+  ["عروض تقديمية وملف تعريفي للشركة","بروفايل يعرضك بشكل احترافي"],
+  ["واجهات مواقع وتطبيقات (UI/UX)","تصميم شاشات واضحة وسهلة"],
+  ["أفلام كرتونية بالذكاء الاصطناعي","قصة وشخصيات وأنميشن وصوت","حسب الطلب"],
+  ["تعليم أدوات الذكاء الاصطناعي","جلسات خاصة توفر وقتك بنفسك"]]},
+ {t:"أتمتة وبيانات",d:"خلّي الشغل المتكرر يمشي لحاله.",i:[
+  ["أتمتة وسكربتات بايثون","توفير ساعات من الشغل اليدوي"],
+  ["رد آلي على واتساب وتذكير بالمواعيد","زبونك يلقى رد فوري"],
+  ["لوحات متابعة ومبيعات ومخزون","نظام صغير يوضح وش يبيع ومتى"],
+  ["فواتير آلية","فواتير PDF مرتبة باسم محلك"]]},
+ {t:"3D وتصميم هندسي",d:"تشوف مشروعك قبل التنفيذ.",i:[
+  ["مشاهد وتصاميم 3D واقعية","عرض المحل أو المنتج قبل التنفيذ","حسب الطلب"],
+  ["تصميم داخلي","مفاهيم وتوزيع ومجسم 3D","حسب الطلب"],
+  ["مخططات 2D بصيغة DXF","تفتح في AutoCAD","حسب الطلب"],
+  ["مجسمات وعبوات منتجات","تشوف العبوة قبل التصنيع","حسب الطلب"],
+  ["تصميم مطبوعات وعبوات","بطاقات، فلايرات، بوسترات، ملصقات"]]}
+];
+var WA="96898999470";
+var cats=document.getElementById('cats');
+CATS.forEach(function(c,ci){
+  var box=document.createElement('div');box.className='cat';box.style.marginBottom='14px';
+  var h='<header><div><h3>'+c.t+'</h3><p>'+c.d+'</p></div><button class="all" type="button" data-c="'+ci+'">اختر الكل</button></header><div class="items">';
+  c.i.forEach(function(it,ii){h+='<label class="item"><input type="checkbox" id="s'+ci+'-'+ii+'" data-c="'+ci+'" data-n="'+it[0]+'"><span><b>'+it[0]+(it[2]?'<span class="tag">'+it[2]+'</span>':'')+'</b><small>'+it[1]+'</small></span></label>';});
+  box.innerHTML=h+'</div>';cats.appendChild(box);
+});
+function v(id){return (document.getElementById(id).value||'').trim()}
+function build(){
+  var groups={},n=0;
+  document.querySelectorAll('#cats input:checked').forEach(function(x){var c=CATS[x.dataset.c].t;(groups[c]=groups[c]||[]).push(x.dataset.n);n++;});
+  var langs=[].map.call(document.querySelectorAll('#langs input:checked'),function(x){return x.value});
+  var when=(document.querySelector('#when input:checked')||{}).value||'';
+  var L=['السلام عليكم، أبي أشتغل مع وهج.',''];
+  if(v('f-name'))L.push('اسم المشروع: '+v('f-name'));
+  if(v('f-type'))L.push('النشاط: '+v('f-type'));
+  if(v('f-country'))L.push('الدولة: '+v('f-country'));
+  if(v('f-acc'))L.push('الحساب: '+v('f-acc'));
+  if(L.length>2)L.push('');
+  if(n){L.push('الخدمات اللي أبيها:');Object.keys(groups).forEach(function(g){L.push('• '+g+': '+groups[g].join('، '));});L.push('');}
+  else{L.push('ما حددت خدمات، أبي أعرف وش يناسب مشروعي.');L.push('');}
+  if(langs.length)L.push('لغة المحتوى: '+langs.join('، '));
+  if(when)L.push('متى أبدأ: '+when);
+  if(v('f-notes'))L.push('ملاحظات: '+v('f-notes'));
+  var msg=L.join('\n').trim();
+  document.getElementById('msg').textContent=msg;
+  var href='https://wa.me/'+WA+'?text='+encodeURIComponent(msg);
+  document.getElementById('send').href=href;
+  document.getElementById('count').innerHTML=!n?'ما اخترت خدمات بعد':n===1?'اخترت <b>خدمة وحدة</b>':n===2?'اخترت <b>خدمتين</b>':('اخترت <b>'+n+'</b> '+(n<=10?'خدمات':'خدمة'));
+  var s2=document.getElementById('send2');
+  if(n){s2.href=href;s2.target='_blank';s2.rel='noopener';}else{s2.href='#pick';s2.removeAttribute('target');}
+}
+document.addEventListener('change',build);document.addEventListener('input',build);
+document.querySelectorAll('.all').forEach(function(b){b.addEventListener('click',function(){
+  var boxes=document.querySelectorAll('#cats input[data-c="'+b.dataset.c+'"]');var allOn=[].every.call(boxes,function(x){return x.checked});
+  boxes.forEach(function(x){x.checked=!allOn});b.textContent=allOn?'اختر الكل':'إلغاء الكل';build();});});
+function copyText(t,btn,label){
+  function ok(){btn.textContent='تم النسخ';setTimeout(function(){btn.textContent=label},1800)}
+  try{navigator.clipboard.writeText(t).then(ok,function(){btn.textContent='انسخ النص يدويًا'})}catch(e){btn.textContent='انسخ النص يدويًا'}
+}
+document.getElementById('copy').addEventListener('click',function(){copyText(document.getElementById('msg').textContent,this,'نسخ الطلب')});
+document.getElementById('copyNum').addEventListener('click',function(){copyText('+'+WA,this,'نسخ الرقم')});
+build();
+
+(function(){var n=0;CATS.forEach(function(c){n+=c.i.length});var el=document.getElementById('total');el.dataset.count=n;el.textContent=String(n).replace(/\d/g,function(d){return '٠١٢٣٤٥٦٧٨٩'[d]});})();
+/* marquee */
+(function(){var w=[];CATS.forEach(function(c){c.i.slice(0,3).forEach(function(i){w.push(i[0])})});
+ var h=w.map(function(x){return '<span>'+x+'</span>'}).join('');document.getElementById('mq').innerHTML=h+h;})();
+
+var still=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
+/* counters */
+(function(){if(still)return;var ar='٠١٢٣٤٥٦٧٨٩';function fa(n){return String(n).replace(/\d/g,function(d){return ar[d]})}
+ document.querySelectorAll('[data-count]').forEach(function(el){var to=+el.dataset.count,t0=null;
+  function step(ts){if(!t0)t0=ts;var p=Math.min(1,(ts-t0)/1400),e=1-Math.pow(1-p,3);el.textContent=fa(Math.round(to*e)||1);if(p<1)requestAnimationFrame(step)}
+  requestAnimationFrame(step);});})();
+
+/* anime.js: logo ignition + card stagger */
+(function(){if(still||!window.anime)return;
+ anime.timeline({easing:'easeOutExpo'})
+  .add({targets:'.logo .sun',scale:[.6,1],duration:900})
+  .add({targets:'.logo .ring-i',rotate:[-90,0],scale:[.8,1],duration:1100},'-=700')
+  .add({targets:'.logo .ring-o',rotate:[120,0],scale:[.85,1],duration:1300},'-=1000')
+  .add({targets:'.logo .word',translateY:[20,0],duration:800},'-=1000')
+  .add({targets:'.logo .spark',scale:[0,1.2,1],rotate:[0,90],duration:900},'-=600');
+ anime({targets:'.logo .ring-o',rotate:'+=360',duration:60000,easing:'linear',loop:true,delay:1600});
+ anime({targets:'.logo .spark',scale:[1,.75,1],duration:2400,easing:'easeInOutSine',loop:true,delay:2200});
+ anime({targets:'.cat',translateY:[24,0],delay:anime.stagger(70,{start:300}),duration:800,easing:'easeOutQuart'});
+})();
+/* Motion: scroll reveals */
+(function(){if(still||!window.Motion||!Motion.inView)return;
+ document.querySelectorAll('section h2, .reel, .form, .summary, .contact, .steps li').forEach(function(el){
+  Motion.inView(el,function(){Motion.animate(el,{transform:['translateY(14px)','none']},{duration:.7,easing:[.2,.8,.2,1]})});});
+})();
+/* embers */
+(function(){var c=document.getElementById('embers');if(!c||!c.getContext)return;var x=c.getContext('2d'),W,H,dpr=Math.min(2,window.devicePixelRatio||1),P=[];
+ function size(){W=c.clientWidth;H=c.clientHeight;c.width=W*dpr;c.height=H*dpr;x.setTransform(dpr,0,0,dpr,0,0)}
+ function mk(y){return{x:Math.random()*W,y:y==null?H+10:y,r:.6+Math.random()*1.8,v:.15+Math.random()*.5,s:Math.random()*6.28,a:.25+Math.random()*.55}}
+ size();for(var i=0;i<46;i++)P.push(mk(Math.random()*H));window.addEventListener('resize',size);
+ function draw(){x.clearRect(0,0,W,H);P.forEach(function(p,i){p.y-=p.v;p.s+=.01;p.x+=Math.sin(p.s)*.25;if(p.y<-10)P[i]=mk();
+  var g=x.createRadialGradient(p.x,p.y,0,p.x,p.y,p.r*5);g.addColorStop(0,'rgba(255,176,32,'+p.a+')');g.addColorStop(1,'rgba(255,176,32,0)');
+  x.fillStyle=g;x.beginPath();x.arc(p.x,p.y,p.r*5,0,6.283);x.fill();});if(!still)requestAnimationFrame(draw)}
+ draw();})();
+</script>
+
+</body>
+</html>
