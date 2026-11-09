@@ -95,9 +95,10 @@ section{display:flex;flex-direction:column;gap:18px}
 .bar b{color:var(--gold)}
 
 /* work */
-.work{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.work{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;width:100%;overflow:hidden}
+@media (min-width:700px){.work{grid-template-columns:repeat(3,minmax(0,1fr))}}
 .reel{display:flex;flex-direction:column;gap:8px;min-width:0}
-.reel img{display:block;width:100%;aspect-ratio:9/16;object-fit:cover;border-radius:14px;border:1px solid var(--line)}
+.reel img,.reel video{display:block;width:100%;max-width:100%;aspect-ratio:9/16;object-fit:contain;background:#0B0D12;border-radius:14px;border:1px solid var(--line)}
 .reel b{font-weight:600;font-size:.92rem}
 .reel .links{display:flex;flex-wrap:wrap;gap:4px 12px;font-size:.82rem}
 .reel .links a{color:var(--mute)}
@@ -238,34 +239,59 @@ h2::after{content:"";position:absolute;right:0;bottom:0;height:2px;width:56px;ba
     <h2 id="h-work">من شغلنا</h2>
     <div class="work">
       <div class="reel">
-        <img src="r31.jpg" alt="لقطة من ريلز عميل عادي ضد عميل وهج" width="360" height="640" loading="lazy">
+        <video src="w1.mp4" poster="w1.jpg" controls playsinline muted loop preload="none"></video>
         <b>عميل عادي ضد عميل وهج</b>
         <div class="links">
-          <a href="https://www.instagram.com/wahaj.gulf/reel/Dfb0Hs2pBgS/" target="_blank" rel="noopener">انستقرام</a>
+          <a href="https://www.instagram.com/reel/Dfb0Hs2pBgS/" target="_blank" rel="noopener">انستقرام</a>
           <a href="https://www.tiktok.com/@r3022337/video/7705384195010432263" target="_blank" rel="noopener">تيك توك</a>
           <a href="https://youtube.com/shorts/XiTneUWZCtc" target="_blank" rel="noopener">يوتيوب</a>
           <a href="https://x.com/wahaj_gulf/status/2118996756524626102" target="_blank" rel="noopener">X</a>
         </div>
       </div>
       <div class="reel">
-        <img src="fa.jpg" alt="لقطة من الريلز الفارسي" width="360" height="640" loading="lazy">
+        <video src="w2.mp4" poster="w2.jpg" controls playsinline muted loop preload="none"></video>
         <b>ريلز بالفارسي للجمهور الإيراني</b>
         <div class="links">
-          <a href="https://www.instagram.com/wahaj.gulf/reel/Dfb6BatB6AB/" target="_blank" rel="noopener">انستقرام</a>
+          <a href="https://www.instagram.com/reel/Dfb6BatB6AB/" target="_blank" rel="noopener">انستقرام</a>
           <a href="https://www.tiktok.com/@r3022337/video/7705384635177438482" target="_blank" rel="noopener">تيك توك</a>
           <a href="https://youtube.com/shorts/ZJdjF5zZFzE" target="_blank" rel="noopener">يوتيوب</a>
           <a href="https://x.com/wahaj_gulf/status/2119006862385488131" target="_blank" rel="noopener">X</a>
         </div>
       </div>
       <div class="reel">
-        <img src="sv.jpg" alt="لقطة من فيديو خدمات وهج" width="360" height="640" loading="lazy">
+        <video src="w3.mp4" poster="w3.jpg" controls playsinline muted loop preload="none"></video>
         <b>فيديو خدمات وهج</b>
         <div class="links">
-          <a href="https://www.instagram.com/wahaj.gulf/reel/DfcPX7DhRIK/" target="_blank" rel="noopener">انستقرام</a>
+          <a href="https://www.instagram.com/reel/DfcPX7DhRIK/" target="_blank" rel="noopener">انستقرام</a>
           <a href="https://www.tiktok.com/@r3022337/video/7705419491227864327" target="_blank" rel="noopener">تيك توك</a>
           <a href="https://youtube.com/shorts/lVT_parmd8g" target="_blank" rel="noopener">يوتيوب</a>
           <a href="https://x.com/wahaj_gulf/status/2119053099088462080" target="_blank" rel="noopener">X</a>
         </div>
+      </div>
+      <div class="reel">
+        <video src="w4.mp4" poster="w4.jpg" controls playsinline muted loop preload="none"></video>
+        <b>حجز مغسلة سيارات أونلاين</b>
+        <div class="links"><a href="https://www.instagram.com/wahaj.gulf/reels/" target="_blank" rel="noopener">شوف على انستقرام</a></div>
+      </div>
+      <div class="reel">
+        <video src="w5.mp4" poster="w5.jpg" controls playsinline muted loop preload="none"></video>
+        <b>طلب ورد من صفحة واحدة</b>
+        <div class="links"><a href="https://www.instagram.com/wahaj.gulf/reels/" target="_blank" rel="noopener">شوف على انستقرام</a></div>
+      </div>
+      <div class="reel">
+        <video src="w6.mp4" poster="w6.jpg" controls playsinline muted loop preload="none"></video>
+        <b>محلك مسكّر والحجوزات شغالة</b>
+        <div class="links"><a href="https://www.instagram.com/wahaj.gulf/reels/" target="_blank" rel="noopener">شوف على انستقرام</a></div>
+      </div>
+      <div class="reel">
+        <video src="w7.mp4" poster="w7.jpg" controls playsinline muted loop preload="none"></video>
+        <b>3 أسباب تدفن أي مشروع</b>
+        <div class="links"><a href="https://www.instagram.com/wahaj.gulf/reels/" target="_blank" rel="noopener">شوف على انستقرام</a></div>
+      </div>
+      <div class="reel">
+        <video src="w8.mp4" poster="w8.jpg" controls playsinline muted loop preload="none"></video>
+        <b>عندك 3 ثواني تقنع الزبون</b>
+        <div class="links"><a href="https://www.instagram.com/wahaj.gulf/reels/" target="_blank" rel="noopener">شوف على انستقرام</a></div>
       </div>
     </div>
   </section>
