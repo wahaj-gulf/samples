@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>منصة المركز – نموذج عرض</title>
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f5f6fa;--card:#fff;--ink:#16213a;--mut:#6b7488;--pri:#1f4fd6;--pri2:#e8eeff;--ok:#12a36b;--warn:#e69a12;--bad:#d64545;--bd:#e5e8ef}
+*{box-sizing:border-box}body{margin:0;font-family:Tajawal,sans-serif;background:var(--bg);color:var(--ink)}
+button{font-family:inherit;cursor:pointer}
+.login{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:20px;background:linear-gradient(135deg,#0f2a7a,#1f4fd6)}
+.lbox{background:#fff;border-radius:20px;padding:32px;max-width:440px;width:100%;text-align:center}
+.lbox h1{margin:8px 0 4px;font-size:24px}.lbox p{color:var(--mut);margin:0 0 20px}
+.roles{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.role{border:1px solid var(--bd);background:#fff;border-radius:14px;padding:16px 8px;font-size:15px;font-weight:700}
+.role span{display:block;font-size:26px;margin-bottom:6px}.role:hover{border-color:var(--pri);background:var(--pri2)}
+.app{display:none;min-height:100vh}
+.side{position:fixed;inset:0 0 0 auto;width:230px;background:#0f1d42;color:#cfd6ea;padding:18px 12px;display:flex;flex-direction:column}
+.brand{font-weight:800;color:#fff;font-size:18px;padding:6px 10px 18px}
+.nav button{display:block;width:100%;text-align:right;background:none;border:0;color:inherit;padding:11px 12px;border-radius:10px;font-size:15px;margin-bottom:2px}
+.nav button.on,.nav button:hover{background:#21336b;color:#fff}
+.who{margin-top:auto;font-size:13px;padding:10px;border-top:1px solid #23305a}
+.who button{margin-top:8px;background:#21336b;color:#fff;border:0;border-radius:8px;padding:7px 12px}
+main{margin-right:230px;padding:24px}
+h2{margin:0 0 16px;font-size:22px}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px;margin-bottom:18px}
+.kpi{background:var(--card);border:1px solid var(--bd);border-radius:14px;padding:16px}
+.kpi b{display:block;font-size:24px;margin-top:4px}.kpi small{color:var(--mut)}
+.card{background:var(--card);border:1px solid var(--bd);border-radius:14px;padding:16px;margin-bottom:16px;overflow-x:auto}
+.card h3{margin:0 0 12px;font-size:17px;display:flex;justify-content:space-between;align-items:center}
+table{width:100%;border-collapse:collapse;font-size:14px;min-width:520px}
+th,td{padding:10px 8px;border-bottom:1px solid var(--bd);text-align:right}th{color:var(--mut);font-weight:500}
+.tag{padding:3px 10px;border-radius:20px;font-size:12px;font-weight:700}
+.t-ok{background:#e3f7ee;color:var(--ok)}.t-w{background:#fff3dc;color:#a86b00}.t-b{background:#fde8e8;color:var(--bad)}
+.btn{background:var(--pri);color:#fff;border:0;border-radius:9px;padding:8px 14px;font-size:14px}
+.btn.s{background:var(--pri2);color:var(--pri)}
+.bar{height:8px;background:#eef0f5;border-radius:6px;overflow:hidden}.bar i{display:block;height:100%;background:var(--pri)}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.list li{padding:10px 0;border-bottom:1px solid var(--bd);list-style:none;font-size:14px}.list{padding:0;margin:0}
+.modal{position:fixed;inset:0;background:#0007;display:none;align-items:center;justify-content:center;padding:16px;z-index:9}
+.mbox{background:#fff;border-radius:16px;padding:22px;max-width:420px;width:100%}
+.mbox label{display:block;font-size:13px;color:var(--mut);margin:10px 0 4px}
+.mbox input,.mbox select{width:100%;padding:10px;border:1px solid var(--bd);border-radius:9px;font-family:inherit;font-size:15px}
+.inv{border:1px dashed var(--bd);border-radius:12px;padding:16px;font-size:14px}
+.toast{position:fixed;bottom:20px;left:20px;background:#0f1d42;color:#fff;padding:12px 18px;border-radius:10px;display:none;z-index:10}
+.mob{display:none}
+@media(max-width:800px){[style*="margin-right:230px"]{margin-right:0!important}.side{position:static;width:auto;flex-direction:row;flex-wrap:wrap;padding:10px}.brand{width:100%;padding:4px}.nav{display:flex;overflow-x:auto;gap:4px;width:100%}.nav button{white-space:nowrap;width:auto}.who{display:none}main{margin:0;padding:14px}.grid2{grid-template-columns:1fr}.mob{display:inline-block}}
+</style></head><body>
+
+<div class="login" id="login"><div class="lbox">
+<div style="font-size:40px">🎓</div><h1>منصة المركز</h1><p>فوترة • متابعة الطلاب • أولياء الأمور</p>
+<div class="roles">
+<button class="role" onclick="go('admin')"><span>🏛️</span>الإدارة</button>
+<button class="role" onclick="go('teacher')"><span>👨‍🏫</span>المعلم</button>
+<button class="role" onclick="go('parent')"><span>👪</span>ولي الأمر</button>
+<button class="role" onclick="go('student')"><span>🧑‍🎓</span>الطالب</button>
+</div><p style="margin-top:18px;font-size:12px">نموذج عرض – اختر نوع الحساب للتجربة</p><p style="margin-top:14px;font-size:12px;color:#8a93a8">صُنع هذا التطبيق بواسطة <b style="color:#1f4fd6">وهج ✦ Wahaj</b></p></div></div>
+
+<div class="app" id="app">
+<aside class="side"><div class="brand">🎓 منصة المركز</div><div class="nav" id="nav"></div>
+<div class="who"><div id="whoName"></div><button onclick="out()">تسجيل خروج</button></div></aside>
+<main id="main"></main><div style="margin-right:230px;text-align:center;font-size:12px;color:#8a93a8;padding:14px">صُنع هذا التطبيق بواسطة <b style="color:#1f4fd6">وهج ✦ Wahaj</b></div><button class="btn mob" style="position:fixed;bottom:14px;right:14px" onclick="out()">خروج</button></div>
+
+<div class="modal" id="modal"><div class="mbox" id="mbox"></div></div>
+<div class="toast" id="toast"></div>
+
+<script>
+const S={students:[
+{id:1,name:'أحمد سالم البلوشي',prog:'إدارة أعمال',lvl:'السنة 2',parent:'سالم البلوشي',att:94,gpa:3.6},
+{id:2,name:'مريم خالد الهنائي',prog:'هندسة حاسوب',lvl:'السنة 1',parent:'خالد الهنائي',att:98,gpa:3.9},
+{id:3,name:'يوسف علي الراشدي',prog:'محاسبة',lvl:'السنة 3',parent:'علي الراشدي',att:81,gpa:2.8},
+{id:4,name:'فاطمة سعيد الكندي',prog:'تصميم جرافيك',lvl:'السنة 1',parent:'سعيد الكندي',att:90,gpa:3.4},
+{id:5,name:'عبدالله ناصر الحارثي',prog:'إدارة أعمال',lvl:'السنة 2',parent:'ناصر الحارثي',att:72,gpa:2.5}],
+inv:[
+{no:'INV-1041',sid:1,item:'رسوم الفصل الأول',amt:850,paid:850,due:'2026-09-15'},
+{no:'INV-1042',sid:2,item:'رسوم الفصل الأول',amt:950,paid:500,due:'2026-09-15'},
+{no:'INV-1043',sid:3,item:'رسوم الفصل الأول',amt:800,paid:0,due:'2026-10-01'},
+{no:'INV-1044',sid:4,item:'رسوم الفصل الأول',amt:900,paid:900,due:'2026-09-15'},
+{no:'INV-1045',sid:5,item:'رسوم الفصل الأول',amt:850,paid:300,due:'2026-10-01'},
+{no:'INV-1046',sid:1,item:'القسط الثاني',amt:850,paid:0,due:'2026-12-01'}],
+grades:[{c:'مبادئ الإدارة',m:88},{c:'الرياضيات',m:76},{c:'اللغة الإنجليزية',m:92},{c:'الاقتصاد',m:84}],
+sched:[['الأحد','8:00','مبادئ الإدارة','قاعة 3'],['الإثنين','10:00','الرياضيات','قاعة 1'],['الثلاثاء','8:00','اللغة الإنجليزية','مختبر 2'],['الأربعاء','12:00','الاقتصاد','قاعة 4']],
+msgs:[{f:'إدارة المركز',t:'تذكير: موعد القسط الثاني 1 ديسمبر',d:'اليوم'},{f:'أ. محمد – الرياضيات',t:'أداء ممتاز في الاختبار القصير 👏',d:'أمس'},{f:'إدارة المركز',t:'اختبارات منتصف الفصل تبدأ 20 نوفمبر',d:'منذ 3 أيام'}]};
+const R={admin:{n:'مدير المركز',p:[['dash','📊 لوحة التحكم'],['bill','💳 الفوترة والأقساط'],['stu','🧑‍🎓 الطلاب'],['rep','📈 التقارير'],['msg','✉️ الرسائل']]},
+teacher:{n:'أ. محمد – الرياضيات',p:[['tdash','📊 الرئيسية'],['att','✅ تسجيل الحضور'],['grd','📝 الدرجات'],['msg','✉️ الرسائل']]},
+parent:{n:'سالم البلوشي (ولي أمر أحمد)',p:[['pdash','🏠 ابني'],['pfee','💳 الرسوم والدفع'],['pgr','📝 الدرجات والحضور'],['msg','✉️ الرسائل']]},
+student:{n:'أحمد سالم البلوشي',p:[['sdash','🏠 الرئيسية'],['sch','🗓️ الجدول'],['pgr','📝 درجاتي'],['pfee','💳 رسومي']]}};
+let role,page;const $=i=>document.getElementById(i);
+const omr=n=>n.toLocaleString('ar-OM')+' ر.ع';
+const stu=id=>S.students.find(s=>s.id==id);
+const st=i=>i.paid>=i.amt?['مدفوعة','t-ok']:i.paid>0?['جزئية','t-w']:['غير مدفوعة','t-b'];
+function go(r){role=r;$('login').style.display='none';$('app').style.display='block';$('whoName').textContent=R[r].n;show(R[r].p[0][0])}
+function out(){$('app').style.display='none';$('login').style.display='flex'}
+function toast(t){const e=$('toast');e.textContent=t;e.style.display='block';setTimeout(()=>e.style.display='none',2500)}
+function modal(h){$('mbox').innerHTML=h;$('modal').style.display='flex'}
+function close_(){$('modal').style.display='none'}
+$('modal').onclick=e=>{if(e.target.id=='modal')close_()};
+function show(p){page=p;$('nav').innerHTML=R[role].p.map(([k,l])=>`<button class="${k==p?'on':''}" onclick="show('${k}')">${l}</button>`).join('');$('main').innerHTML=V[p]();}
+function invRows(list,act){return list.map(i=>{const [t,c]=st(i);return `<tr><td>${i.no}</td><td>${stu(i.sid).name}</td><td>${i.item}</td><td>${omr(i.amt)}</td><td>${omr(i.paid)}</td><td>${i.due}</td><td><span class="tag ${c}">${t}</span></td><td>${act&&i.paid<i.amt?`<button class="btn s" onclick="pay('${i.no}')">${role=='admin'?'تسجيل دفعة':'ادفع الآن'}</button>`:`<button class="btn s" onclick="rcpt('${i.no}')">إيصال</button>`}</td></tr>`}).join('')}
+const TH='<tr><th>رقم</th><th>الطالب</th><th>البند</th><th>المبلغ</th><th>المدفوع</th><th>الاستحقاق</th><th>الحالة</th><th></th></tr>';
+function tot(){const a=S.inv.reduce((s,i)=>s+i.amt,0),p=S.inv.reduce((s,i)=>s+i.paid,0);return{a,p,r:a-p}}
+const V={
+dash(){const t=tot();return `<h2>لوحة التحكم</h2><div class="kpis">
+<div class="kpi"><small>عدد الطلاب</small><b>${S.students.length}</b></div>
+<div class="kpi"><small>إجمالي الفواتير</small><b>${omr(t.a)}</b></div>
+<div class="kpi"><small>المحصّل</small><b style="color:var(--ok)">${omr(t.p)}</b></div>
+<div class="kpi"><small>المتأخرات</small><b style="color:var(--bad)">${omr(t.r)}</b></div></div>
+<div class="grid2"><div class="card"><h3>نسبة التحصيل</h3><div class="bar"><i style="width:${Math.round(t.p/t.a*100)}%"></i></div><p>${Math.round(t.p/t.a*100)}% من الرسوم محصّلة</p></div>
+<div class="card"><h3>تنبيهات</h3><ul class="list"><li>⚠️ ${S.inv.filter(i=>i.paid<i.amt).length} فواتير غير مكتملة السداد</li><li>📉 ${S.students.filter(s=>s.att<80).length} طالب حضوره أقل من 80%</li><li>📅 اختبارات منتصف الفصل 20 نوفمبر</li></ul></div></div>
+<div class="card"><h3>آخر الفواتير <button class="btn" onclick="show('bill')">عرض الكل</button></h3><table>${TH}${invRows(S.inv.slice(-4),1)}</table></div>`},
+bill(){return `<h2>الفوترة والأقساط</h2><div class="card"><h3>كل الفواتير <button class="btn" onclick="newInv()">+ فاتورة جديدة</button></h3><table>${TH}${invRows(S.inv,1)}</table></div>`},
+stu(){return `<h2>الطلاب</h2><div class="card"><table><tr><th>الاسم</th><th>التخصص</th><th>المستوى</th><th>ولي الأمر</th><th>الحضور</th><th>المعدل</th></tr>${S.students.map(s=>`<tr><td>${s.name}</td><td>${s.prog}</td><td>${s.lvl}</td><td>${s.parent}</td><td><span class="tag ${s.att>=90?'t-ok':s.att>=80?'t-w':'t-b'}">${s.att}%</span></td><td>${s.gpa}</td></tr>`).join('')}</table></div>`},
+rep(){const progs={};S.students.forEach(s=>progs[s.prog]=(progs[s.prog]||0)+1);return `<h2>التقارير</h2><div class="grid2"><div class="card"><h3>الطلاب حسب التخصص</h3>${Object.entries(progs).map(([k,v])=>`<p>${k} (${v})</p><div class="bar"><i style="width:${v/S.students.length*100}%"></i></div>`).join('')}</div>
+<div class="card"><h3>الحضور لكل طالب</h3>${S.students.map(s=>`<p>${s.name} – ${s.att}%</p><div class="bar"><i style="width:${s.att}%;background:${s.att<80?'var(--bad)':'var(--ok)'}"></i></div>`).join('')}</div></div>`},
+msg(){return `<h2>الرسائل والإشعارات</h2><div class="card"><h3>الوارد ${role!='student'?'<button class="btn" onclick="newMsg()">+ رسالة</button>':''}</h3><ul class="list">${S.msgs.map(m=>`<li><b>${m.f}</b> – ${m.t}<br><small style="color:var(--mut)">${m.d}</small></li>`).join('')}</ul></div>`},
+tdash(){return `<h2>أهلاً أ. محمد 👋</h2><div class="kpis"><div class="kpi"><small>طلابي</small><b>${S.students.length}</b></div><div class="kpi"><small>محاضرات اليوم</small><b>2</b></div><div class="kpi"><small>متوسط الحضور</small><b>${Math.round(S.students.reduce((a,s)=>a+s.att,0)/S.students.length)}%</b></div></div><div class="card"><h3>محاضرات اليوم</h3><ul class="list"><li>10:00 – الرياضيات – قاعة 1</li><li>1:00 – الإحصاء – قاعة 2</li></ul></div>`},
+att(){return `<h2>تسجيل الحضور – الرياضيات</h2><div class="card"><table><tr><th>الطالب</th><th>الحالة</th></tr>${S.students.map(s=>`<tr><td>${s.name}</td><td><select style="padding:6px;border-radius:8px;font-family:inherit"><option>حاضر</option><option>غائب</option><option>متأخر</option></select></td></tr>`).join('')}</table><br><button class="btn" onclick="toast('تم حفظ الحضور وإشعار أولياء أمور الغائبين ✅')">حفظ وإرسال إشعار</button></div>`},
+grd(){return `<h2>إدخال الدرجات – الرياضيات</h2><div class="card"><table><tr><th>الطالب</th><th>الاختبار القصير /20</th><th>منتصف الفصل /30</th></tr>${S.students.map(s=>`<tr><td>${s.name}</td><td><input type="number" value="${15+s.id%5}" style="width:70px;padding:6px"></td><td><input type="number" value="${20+s.id*2}" style="width:70px;padding:6px"></td></tr>`).join('')}</table><br><button class="btn" onclick="toast('تم نشر الدرجات للطلاب وأولياء الأمور ✅')">نشر الدرجات</button></div>`},
+pdash(){const s=stu(1),inv=S.inv.filter(i=>i.sid==1),r=inv.reduce((a,i)=>a+i.amt-i.paid,0);return `<h2>${s.name}</h2><div class="kpis"><div class="kpi"><small>الحضور</small><b>${s.att}%</b></div><div class="kpi"><small>المعدل</small><b>${s.gpa}</b></div><div class="kpi"><small>المستحق</small><b style="color:${r?'var(--bad)':'var(--ok)'}">${omr(r)}</b></div></div>
+<div class="grid2"><div class="card"><h3>آخر الدرجات</h3><ul class="list">${S.grades.map(g=>`<li>${g.c} – <b>${g.m}</b></li>`).join('')}</ul></div><div class="card"><h3>إشعارات</h3><ul class="list">${S.msgs.map(m=>`<li>${m.t}</li>`).join('')}</ul></div></div>`},
+pfee(){return `<h2>الرسوم والدفع</h2><div class="card"><table>${TH}${invRows(S.inv.filter(i=>i.sid==1),1)}</table></div>`},
+pgr(){const s=stu(1);return `<h2>الدرجات والحضور</h2><div class="grid2"><div class="card"><h3>الدرجات</h3>${S.grades.map(g=>`<p>${g.c} – ${g.m}</p><div class="bar"><i style="width:${g.m}%"></i></div>`).join('')}</div><div class="card"><h3>الحضور</h3><p style="font-size:40px;font-weight:800;margin:10px 0">${s.att}%</p><p>غياب: يومان • تأخير: يوم واحد</p></div></div>`},
+sdash(){return `<h2>أهلاً أحمد 👋</h2><div class="kpis"><div class="kpi"><small>المعدل</small><b>3.6</b></div><div class="kpi"><small>الحضور</small><b>94%</b></div><div class="kpi"><small>المحاضرة القادمة</small><b>الرياضيات 10:00</b></div></div><div class="card"><h3>إعلانات</h3><ul class="list">${S.msgs.map(m=>`<li>${m.t}</li>`).join('')}</ul></div>`},
+sch(){return `<h2>الجدول الأسبوعي</h2><div class="card"><table><tr><th>اليوم</th><th>الوقت</th><th>المادة</th><th>المكان</th></tr>${S.sched.map(r=>`<tr>${r.map(c=>`<td>${c}</td>`).join('')}</tr>`).join('')}</table></div>`}};
+function pay(no){const i=S.inv.find(x=>x.no==no),r=i.amt-i.paid;modal(`<h3>${role=='admin'?'تسجيل دفعة':'الدفع الإلكتروني'} – ${no}</h3><p>المتبقي: <b>${omr(r)}</b></p><label>المبلغ</label><input id="pv" type="number" value="${r}"><label>طريقة الدفع</label><select><option>بطاقة بنكية</option><option>تحويل بنكي</option><option>نقداً</option></select><br><br><button class="btn" onclick="doPay('${no}')">تأكيد</button> <button class="btn s" onclick="close_()">إلغاء</button>`)}
+function doPay(no){const i=S.inv.find(x=>x.no==no),v=+$('pv').value||0;i.paid=Math.min(i.amt,i.paid+v);close_();toast('تم تسجيل الدفعة وإرسال إيصال لولي الأمر ✅');show(page)}
+function rcpt(no){const i=S.inv.find(x=>x.no==no),s=stu(i.sid);modal(`<div class="inv"><h3 style="margin-top:0">🎓 إيصال سداد</h3><p>رقم: ${no}<br>الطالب: ${s.name}<br>البند: ${i.item}<br>المبلغ: ${omr(i.amt)}<br>المدفوع: ${omr(i.paid)}<br>الحالة: ${st(i)[0]}</p></div><br><button class="btn s" onclick="close_()">إغلاق</button>`)}
+function newInv(){modal(`<h3>فاتورة جديدة</h3><label>الطالب</label><select id="ns">${S.students.map(s=>`<option value="${s.id}">${s.name}</option>`).join('')}</select><label>البند</label><input id="ni" value="رسوم الفصل الثاني"><label>المبلغ (ر.ع)</label><input id="na" type="number" value="850"><label>تاريخ الاستحقاق</label><input id="nd" type="date" value="2027-02-01"><br><br><button class="btn" onclick="addInv()">إصدار وإرسال لولي الأمر</button> <button class="btn s" onclick="close_()">إلغاء</button>`)}
+function addInv(){S.inv.push({no:'INV-'+(1041+S.inv.length),sid:+$('ns').value,item:$('ni').value,amt:+$('na').value,paid:0,due:$('nd').value});close_();toast('تم إصدار الفاتورة ✅');show(page)}
+function newMsg(){modal(`<h3>رسالة جديدة</h3><label>إلى</label><select><option>كل أولياء الأمور</option><option>كل الطلاب</option><option>الإدارة</option></select><label>النص</label><input id="mt" placeholder="اكتب رسالتك"><br><br><button class="btn" onclick="S.msgs.unshift({f:R[role].n,t:$('mt').value||'رسالة',d:'الآن'});close_();toast('تم الإرسال ✅');show(page)">إرسال</button> <button class="btn s" onclick="close_()">إلغاء</button>`)}
+</script></body></html>
