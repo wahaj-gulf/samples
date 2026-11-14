@@ -241,4 +241,4 @@ function addStu(){const n=$('sn').value.trim();if(!n)return;const id=D.students.
 function apptForm(){return `<h3>حجز موعد</h3><label>نوع الموعد</label><select id="at"><option>استشارة أكاديمية</option><option>مراجعة المستندات</option><option>استشارة تدريبية</option></select><label>التاريخ</label><input id="ad" type="date" value="2026-11-26"><br><br><button class="btn" onclick="D.appts.push([$('ad').value,'11:00 ص',$('at').value,'حضوري – مقر المعهد']);cm();toast('تم حجز الموعد ✅');portal()">تأكيد الحجز</button> <button class="btn o" onclick="cm()">إلغاء</button>`}
 function msgForm(){return `<h3>رسالة جديدة</h3><label>إلى</label><select><option>قسم القبول</option><option>المالية</option><option>المدرب</option>${S.role=='admin'?'<option>كل الطلاب</option><option>كل أولياء الأمور</option>':''}</select><label>الرسالة</label><textarea id="mt" rows="4"></textarea><br><br><button class="btn" onclick="D.msgs.unshift({f:S.name,t:$('mt').value||'رسالة',d:'الآن'});cm();toast('تم الإرسال ✅');portal()">إرسال</button> <button class="btn o" onclick="cm()">إلغاء</button>`}
 home();
-</script></body></html>
+</script><script src="extra.js"></script></body></html>
